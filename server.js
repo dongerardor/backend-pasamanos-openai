@@ -13,14 +13,18 @@ app.get("/", (req, res) => {
 });
 
 app.post("/chat", async (req, res) => {
-  const userMessage = req.body.message;
+  const messages = req.body.messages;
+
+  if (!Array.isArray(messages)) {
+    return res.status(400).json({ error: "Formato incorrecto: se espera un array de mensajes." });
+  }
 
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
         model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: userMessage }],
+        messages: messages,
       },
       {
         headers: {
@@ -35,6 +39,7 @@ app.post("/chat", async (req, res) => {
     res.status(500).json({ error: "Error al comunicarse con OpenAI" });
   }
 });
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));

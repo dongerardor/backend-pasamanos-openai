@@ -1,0 +1,38 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+debug.log
+error.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Optional: coverage reports
+coverage/
+
+# Optional: TypeScript
+*.tsbuildinfo
+
+# Optional: Next.js
+.next/
+out/
+
+*.html
