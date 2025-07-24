@@ -8,6 +8,10 @@ app.use(express.json());
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
+app.get("/", (req, res) => {
+  res.send("Servidor de backend para OpenAI - funcionando correctamente.");
+});
+
 app.post("/chat", async (req, res) => {
   const userMessage = req.body.message;
 
